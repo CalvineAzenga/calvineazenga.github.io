@@ -1,0 +1,41 @@
+/* html{
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+} */
+nav{
+  /* width: calc(100% - 30px) !important; */
+  padding: 5px !important;
+}
+nav ul a,
+nav .brand-logo,h4 {
+  color: #444;
+}
+
+.v-spacing{
+  padding: 20px;
+}
+.menu-icon{
+  font-size: 36px !important;
+}
+.logo-img{
+  height: 56px !important;
+}
+.company-name{
+  font-weight: bold;
+  color: #444;
+}
+
+
+.row .carousel img{
+  width: 80%;
+}
+.chips-section{
+  padding: 10px;
+}
+.collection-img{
+  /* width: 350px; */
+  height: 250px;
+}
+.collection-item img{
+  width: 100%;
+}
