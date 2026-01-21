@@ -1,234 +1,772 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Xirox - ALM</title>
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="./global_font.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="./materialize/material-icons.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-<style>
-  nav{
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-    height: auto !important;
-  }
-  .nav-wrapper{
-    vertical-align: middle !important;
-  }
-</style>
-</head>
-<body class="grey lighten-3">
+    <title>Calvine Azenga — Junior Web Developer</title>
+    <meta
+      name="description"
+      content="Calvine Azenga — Junior Web Developer (HTML, CSS, JavaScript, PHP, MySQL). Building responsive, performant websites and web apps."
+    />
 
-  <!-- Navigation -->
-  <section>
-    <div class="navbar-fixed">
-      <nav class="green lighten-5" role="navigation">
-        <div class="nav-wrapper container">
-          <a href="" class="left"><img class="logo-img" src="./logo.png" alt="xirox-logo"></a>
-          <a href="" class="sidenav-trigger right" data-target="mobile-nav">
-            <i class="material-icons red-text menu-icon">menu</i>
-          </a>
-  
-          <ul class="right hide-on-med-and-down">
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Testimonials</a></li>
-            <!-- Space -->
-            <li><a href="#">FAQS</a></li>
-            <li><a href="#">Contact</a></li>
-  
-          </ul>
-                 
-  
-        </div>
-    
-    
+    <!-- IBM Plex Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN (great for a single-file GitHub Pages portfolio) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Optional: Tailwind config (colors, fonts) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [
+                "IBM Plex Sans",
+                "ui-sans-serif",
+                "system-ui",
+                "-apple-system",
+                "Segoe UI",
+                "Roboto",
+                "Helvetica",
+                "Arial",
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+              ],
+            },
+            boxShadow: {
+              glow: "0 0 0 1px rgba(255,255,255,.08), 0 10px 30px rgba(0,0,0,.35)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      /* Subtle animated gradient background */
+      .bg-animated {
+        background:
+          radial-gradient(
+            800px circle at 15% 25%,
+            rgba(56, 189, 248, 0.18),
+            transparent 45%
+          ),
+          radial-gradient(
+            900px circle at 85% 35%,
+            rgba(99, 102, 241, 0.22),
+            transparent 40%
+          ),
+          radial-gradient(
+            900px circle at 50% 85%,
+            rgba(34, 197, 94, 0.14),
+            transparent 45%
+          ),
+          linear-gradient(180deg, #070a12 0%, #070a12 40%, #05070d 100%);
+      }
+      .noise:before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.08;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+      }
+      :focus-visible {
+        outline: 2px solid rgba(56, 189, 248, 0.8);
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-animated noise text-slate-100 antialiased font-sans">
+    <!-- Top gradient line -->
+    <div
+      class="h-1 w-full bg-gradient-to-r from-sky-400 via-indigo-400 to-emerald-400"
+    ></div>
+
+    <!-- Mobile top bar -->
+    <header
+      class="sticky top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl lg:hidden"
+    >
+      <div
+        class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3"
+      >
+        <a href="#top" class="font-semibold tracking-tight">
+          Calvine <span class="text-sky-400">Azenga</span>
+        </a>
+        <button
+          id="menuBtn"
+          class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <i class="fa-solid fa-bars"></i> Menu
+        </button>
+      </div>
+      <nav
+        id="mobileMenu"
+        class="hidden border-t border-white/10 px-4 py-3"
+        aria-label="Mobile navigation"
+      >
+        <ul class="grid gap-2 text-sm">
+          <li>
+            <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#about"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              class="block rounded-lg px-3 py-2 hover:bg-white/5"
+              href="#experience"
+              >Experience</a
+            >
+          </li>
+          <li>
+            <a
+              class="block rounded-lg px-3 py-2 hover:bg-white/5"
+              href="#projects"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              class="block rounded-lg px-3 py-2 hover:bg-white/5"
+              href="#education"
+              >Education</a
+            >
+          </li>
+          <li>
+            <a
+              class="block rounded-lg px-3 py-2 hover:bg-white/5"
+              href="#skills"
+              >Skills</a
+            >
+          </li>
+          <li>
+            <a
+              class="block rounded-lg px-3 py-2 hover:bg-white/5"
+              href="#interests"
+              >Interests</a
+            >
+          </li>
+        </ul>
       </nav>
-    </div>
+    </header>
 
-    <ul class="sidenav" id="mobile-nav">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <li><a href="collapsible.html">Javascript</a></li>
-      <li><a href="mobile.html">Mobile</a></li>
-    </ul>
-  </section>
-
-  <div class="v-spacing"></div>
-  <!-- Main Section -->
-  <section class="container">
-    <div class="card-panel white lighten-1">
-      <div class="row">
-        <div class="col s12 m8">
-          <div class="card">
-            <div class="card-image">
-              <img src="./items/nkk.png">
-              <span class="card-title hide-on-small-only">Committed to superior quality and results</span>
-            </div>
-            <div class="card-content">
-              <p><span class="company-name">Xerox ALM Limited</span>  is a supplier of products. with a focus on
-                recycled resources, we provide unique tailored solutions to companies of all types</p>
+    <div
+      id="top"
+      class="mx-auto grid max-w-6xl gap-8 px-4 py-10 lg:grid-cols-[260px_1fr] lg:py-14"
+    >
+      <!-- Desktop sidebar -->
+      <aside
+        class="hidden lg:sticky lg:top-8 lg:block lg:h-[calc(100vh-4rem)]"
+        aria-label="Sidebar"
+      >
+        <div
+          class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-glow backdrop-blur-xl"
+        >
+          <div class="flex items-center gap-4">
+            <img
+              src="img/calvine.jpeg"
+              alt="Calvine Azenga"
+              class="h-16 w-16 rounded-2xl object-cover ring-1 ring-white/10"
+            />
+            <div>
+              <div class="text-lg font-semibold leading-tight">
+                Calvine <span class="text-sky-400">Azenga</span>
+              </div>
+              <div class="text-xs text-slate-300">Junior Web Developer</div>
             </div>
           </div>
-        </div>
 
+          <div class="mt-4 space-y-2 text-sm text-slate-300">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-slate-400"></i>
+              <span>Nairobi, Kenya</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-slate-400"></i>
+              <a class="hover:text-sky-300" href="tel:+254700666848"
+                >+254 700 666 848</a
+              >
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-slate-400"></i>
+              <a class="hover:text-sky-300" href="mailto:calvineazenga5326@gmail.com"
+                >calvineazenga5326@gmail.com</a
+              >
+            </div>
+          </div>
 
-        <div class="col s12 m4">
-          <div class="slider">
-            <ul class="slides transparent">
+          <!-- Social -->
+          <div class="mt-5 grid grid-cols-4 gap-2">
+            <a
+              class="group flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 hover:bg-white/10"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn (update link)"
+              title="Update this LinkedIn link"
+            >
+              <i
+                class="fa-brands fa-linkedin-in text-slate-200 group-hover:text-sky-300"
+              ></i>
+            </a>
+            <a
+              class="group flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 hover:bg-white/10"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub (update link)"
+              title="Update this GitHub link"
+            >
+              <i
+                class="fa-brands fa-github text-slate-200 group-hover:text-sky-300"
+              ></i>
+            </a>
+            <a
+              class="group flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 hover:bg-white/10"
+              href="mailto:calvineazenga5326@gmail.com"
+              aria-label="Email"
+              title="Email"
+            >
+              <i
+                class="fa-solid fa-envelope text-slate-200 group-hover:text-emerald-300"
+              ></i>
+            </a>
+            <a
+              class="group flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 hover:bg-white/10"
+              href="tel:+254700666848"
+              aria-label="Phone"
+              title="Call"
+            >
+              <i
+                class="fa-solid fa-phone text-slate-200 group-hover:text-sky-300"
+              ></i>
+            </a>
+          </div>
+
+          <!-- Nav -->
+          <nav class="mt-6" aria-label="Primary navigation">
+            <ul class="space-y-1 text-sm">
               <li>
-                <img src="./items/binlineryellow.png"> 
-                <div class="caption center-align">
-                  <!-- <h6>This is our big Tagline!</h6> -->
-                  <!-- <p class="light grey-text text-lighten-3">Here's our small slogan.</p> -->
-                </div>
+                <a
+                  class="block rounded-xl px-3 py-2 text-slate-200 hover:bg-white/5"
+                  href="#about"
+                  >About</a
+                >
               </li>
               <li>
-                <img src="./items/binlinerwhite.png"> 
-                <div class="caption left-align">
-                  <!-- <h6>This is our big Tagline!</h6>
-                  <p class="light grey-text text-lighten-3">Here's our small slogan.</p> -->
-                </div>
+                <a
+                  class="block rounded-xl px-3 py-2 text-slate-200 hover:bg-white/5"
+                  href="#experience"
+                  >Experience</a
+                >
               </li>
               <li>
-                <img src="./items/dustbinyellow.png"> 
-                <div class="caption right-align">
-                  <!-- <h6>This is our big Tagline!</h6>
-                  <p class="light grey-text text-lighten-3">Here's our small slogan.</p> -->
-                </div>
+                <a
+                  class="block rounded-xl px-3 py-2 text-slate-200 hover:bg-white/5"
+                  href="#projects"
+                  >Projects</a
+                >
               </li>
               <li>
-                <img src="./items/dustbinblack.png"> 
-                <div class="caption center-align">
-                  <!-- <h6>This is our big Tagline!</h6>
-                  <p class="light grey-text text-lighten-3">Here's our small slogan.</p> -->
-                </div>
+                <a
+                  class="block rounded-xl px-3 py-2 text-slate-200 hover:bg-white/5"
+                  href="#education"
+                  >Education</a
+                >
+              </li>
+              <li>
+                <a
+                  class="block rounded-xl px-3 py-2 text-slate-200 hover:bg-white/5"
+                  href="#skills"
+                  >Skills</a
+                >
+              </li>
+              <li>
+                <a
+                  class="block rounded-xl px-3 py-2 text-slate-200 hover:bg-white/5"
+                  href="#interests"
+                  >Interests</a
+                >
               </li>
             </ul>
+          </nav>
+
+          <!-- CTA -->
+          <div class="mt-6 grid gap-2">
+            <a
+              href="mailto:calvineazenga5326@gmail.com"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-400"
+            >
+              <i class="fa-solid fa-paper-plane"></i> Contact Me
+            </a>
+            <a
+              href="#projects"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10"
+            >
+              <i class="fa-solid fa-code"></i> View Projects
+            </a>
           </div>
-          <div class="chips-section center">
-            
-            <div class="chip">
-              Bin liners
-            </div>
-            <div class="chip">
-              Dust Bins
-            </div>
-            <div class="chip">
-              Khaki Bags
-            </div>
-             
-          </div>
-          
         </div>
+      </aside>
 
-      </div>
+      <!-- Main content -->
+      <main class="space-y-10">
+        <!-- HERO / ABOUT -->
+        <section
+          id="about"
+          class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl sm:p-8"
+        >
+          <div
+            class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between"
+          >
+            <div>
+              <p
+                class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200"
+              >
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                Open to junior web developer roles
+              </p>
+
+              <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Junior Web Developer building
+                <span
+                  class="bg-gradient-to-r from-sky-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent"
+                >
+                  responsive, fast websites
+                </span>
+              </h1>
+
+              <p class="mt-4 max-w-2xl text-slate-200 leading-relaxed">
+                I’m Calvine Azenga — a motivated junior web developer with a strong foundation in
+                <span class="font-semibold text-slate-100"
+                  >HTML, CSS, JavaScript, PHP, and MySQL</span
+                >.
+                I enjoy maintaining and improving websites for performance, SEO, and user experience,
+                and I’m committed to clean code, responsive design, and continuous learning in modern web technologies.
+              </p>
+
+              <!-- Quick highlights -->
+              <div class="mt-6 grid gap-3 sm:grid-cols-3">
+                <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <div class="text-xs text-slate-300">Focus</div>
+                  <div class="mt-1 font-semibold">Web Maintenance</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <div class="text-xs text-slate-300">Strength</div>
+                  <div class="mt-1 font-semibold">Performance & SEO</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <div class="text-xs text-slate-300">Style</div>
+                  <div class="mt-1 font-semibold">Responsive UI</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 sm:flex-col sm:items-end">
+              <a
+                class="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+                href="#projects"
+              >
+                <i class="fa-solid fa-bolt text-sky-300"></i> See Projects
+              </a>
+              <a
+                class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10"
+                href="#experience"
+              >
+                <i class="fa-solid fa-briefcase"></i> Experience
+              </a>
+            </div>
+          </div>
+
+          <!-- Social row -->
+          <div class="mt-6 flex flex-wrap gap-2">
+            <a
+              class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              title="Update your LinkedIn link"
+            >
+              <i class="fa-brands fa-linkedin-in text-sky-300"></i> LinkedIn
+            </a>
+            <a
+              class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              title="Update your GitHub link"
+            >
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a
+              class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10"
+              href="mailto:calvineazenga5326@gmail.com"
+            >
+              <i class="fa-solid fa-envelope text-emerald-300"></i> Email
+            </a>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section
+          id="experience"
+          class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl sm:p-8"
+        >
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-bold tracking-tight">Experience</h2>
+            <span class="text-xs text-slate-300">Most recent first</span>
+          </div>
+
+          <div class="mt-6 space-y-6">
+            <article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <div
+                class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+              >
+                <div>
+                  <h3 class="text-lg font-semibold">
+                    Intern Volunteer, Web Maintenance
+                  </h3>
+                  <p class="text-sm text-slate-300">Africa Collect Textiles</p>
+                  <p class="text-xs text-slate-400">Textile Industry • Remote</p>
+                </div>
+                <div class="text-sm text-sky-300">Nov 2022 – Dec 2024</div>
+              </div>
+
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-200">
+                <li>
+                  Maintained and improved the company website (africacollecttextiles.com).
+                </li>
+                <li>
+                  Integrated currency conversion tools to improve international accessibility.
+                </li>
+                <li>
+                  Implemented SEO basics to improve search visibility and organic traffic.
+                </li>
+                <li>
+                  Added new pages and optimized load speeds while supporting brand design requirements.
+                </li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >HTML5</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >CSS3</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >JavaScript</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >SEO</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >Performance</span
+                >
+              </div>
+            </article>
+
+            <article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <div
+                class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+              >
+                <div>
+                  <h3 class="text-lg font-semibold">Software Engineer Intern</h3>
+                  <p class="text-sm text-slate-300">
+                    WisePower Technologies (now Matrix Telematics)
+                  </p>
+                  <p class="text-xs text-slate-400">Nairobi, Kenya</p>
+                </div>
+                <div class="text-sm text-sky-300">Sep 2021 – Aug 2022</div>
+              </div>
+
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-200">
+                <li>
+                  Received hands-on training on ETR and ESD machine setup and integration with POS systems.
+                </li>
+                <li>
+                  Learned fiscal printer workflows and connections to KRA TIMS servers.
+                </li>
+                <li>
+                  Assisted with research on market trends and potential client integrations for tax devices.
+                </li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >Systems Integration</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >Research</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >POS</span
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section
+          id="projects"
+          class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl sm:p-8"
+        >
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-bold tracking-tight">Projects</h2>
+            <a
+              class="text-sm text-sky-300 hover:text-sky-200"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              title="Update your GitHub link"
+            >
+              View on GitHub
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+
+          <div class="mt-4 text-slate-300 text-sm leading-relaxed">
+            Add 2–6 project cards here (repo links + a short impact statement). If you share your GitHub URL,
+            I can populate this section with real repos.
+          </div>
+
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            <!-- Example card (duplicate / edit as needed) -->
+            <article
+              class="group rounded-2xl border border-white/10 bg-black/20 p-5 hover:bg-black/25"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-lg font-semibold">Website Maintenance & SEO</h3>
+                  <p class="mt-1 text-sm text-slate-300">
+                    Ongoing improvements to performance, SEO, and UX for a production site.
+                  </p>
+                </div>
+                <i class="fa-solid fa-screwdriver-wrench text-sky-300"></i>
+              </div>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >HTML/CSS</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >JavaScript</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >SEO</span
+                >
+              </div>
+
+              <div class="mt-5 flex gap-2">
+                <a
+                  class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold hover:bg-white/10"
+                  href="https://africacollecttextiles.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Website
+                </a>
+              </div>
+            </article>
+
+            <article
+              class="group rounded-2xl border border-white/10 bg-black/20 p-5 hover:bg-black/25"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-lg font-semibold">Full-Stack Practice App</h3>
+                  <p class="mt-1 text-sm text-slate-300">
+                    A simple CRUD app using PHP + MySQL to practice backend fundamentals.
+                  </p>
+                </div>
+                <i class="fa-solid fa-database text-emerald-300"></i>
+              </div>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >PHP</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >MySQL</span
+                >
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs"
+                  >Git</span
+                >
+              </div>
+
+              <div class="mt-5 flex gap-2">
+                <a
+                  class="inline-flex items-center gap-2 rounded-xl bg-sky-500 px-3 py-2 text-sm font-semibold text-white hover:bg-sky-400"
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Update your repo link"
+                >
+                  <i class="fa-solid fa-code"></i> Repo
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section
+          id="education"
+          class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl sm:p-8"
+        >
+          <h2 class="text-2xl font-bold tracking-tight">Education</h2>
+
+          <div class="mt-6 grid gap-4">
+            <article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <div
+                class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+              >
+                <div>
+                  <h3 class="text-lg font-semibold">
+                    Murang’a University of Technology
+                  </h3>
+                  <p class="text-sm text-slate-300">B.Sc. in Software Engineering</p>
+                  <p class="mt-2 text-slate-200">
+                    Second Class Honours (Upper Division)
+                  </p>
+                </div>
+                <div class="text-sm text-sky-300">2022</div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section
+          id="skills"
+          class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl sm:p-8"
+        >
+          <h2 class="text-2xl font-bold tracking-tight">Skills</h2>
+
+          <div class="mt-6 grid gap-6 md:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <h3 class="font-semibold">Technical</h3>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >HTML5</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >CSS3</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >JavaScript</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >jQuery</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >ReactJS</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >PHP</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >Python (Flask)</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >Python (Django)</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >MySQL</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >PostgreSQL</span
+                >
+                <span class="rounded-full bg-white/5 px-3 py-1 text-sm ring-1 ring-white/10"
+                  >WordPress</span
+                >
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <h3 class="font-semibold">Tools & Workflow</h3>
+              <ul class="mt-4 space-y-2 text-slate-200">
+                <li class="flex gap-2">
+                  <i class="fa-solid fa-check text-emerald-300 mt-1"></i>
+                  Responsive design & debugging (Chrome DevTools)
+                </li>
+                <li class="flex gap-2">
+                  <i class="fa-solid fa-check text-emerald-300 mt-1"></i>
+                  Website performance optimization & SEO basics
+                </li>
+                <li class="flex gap-2">
+                  <i class="fa-solid fa-check text-emerald-300 mt-1"></i>
+                  API integration and data-driven pages
+                </li>
+                <li class="flex gap-2">
+                  <i class="fa-solid fa-check text-emerald-300 mt-1"></i>
+                  Git workflows and collaboration
+                </li>
+                <li class="flex gap-2">
+                  <i class="fa-solid fa-check text-emerald-300 mt-1"></i>
+                  Docker fundamentals
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- INTERESTS -->
+        <section
+          id="interests"
+          class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl sm:p-8"
+        >
+          <h2 class="text-2xl font-bold tracking-tight">Interests</h2>
+          <div class="mt-4 space-y-3 text-slate-200 leading-relaxed">
+            <p>
+              I’m passionate about clean code, responsive design, and continuous learning in modern web technologies.
+            </p>
+            <p>
+              I enjoy improving real-world websites through better performance, SEO, and user experience.
+            </p>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pb-10 text-center text-xs text-slate-400">
+          <p>
+            © <span id="year"></span> Calvine Azenga • Built with Tailwind CSS •
+            <a class="text-sky-300 hover:text-sky-200" href="#top">Back to top</a>
+          </p>
+        </footer>
+      </main>
     </div>
-  </section>
-  <section class="container">
-    <div class="v-spacing"></div>
-    <div class="row">
-      <div class="col s12 m6">
-        <ul class="collection with-header">
-          <li class="collection-header"><h4>Dust Bins</h4></li>
-          
-          <li class="collection-item">
-            <div class="chip">
-              white
-            </div>
-            <div class="chip">
-              black
-            </div>
-            <div class="chip">
-              red
-            </div>
-            <div class="chip">
-              yellow
-            </div>
-          </li>
-          <li class="collection-item">
-            <img class="collection-img" src="./items/dustbinblack.png"> 
-          </li>
-          <li class="collection-item">
-            <img class="collection-img" src="./items/dustbinwhite.png"> 
-          </li>
-          <li class="collection-item">
-            <img class="collection-img" src="./items/dustbinyellow.png"> 
 
-          </li>
-          <li class="collection-item">
-            <img class="collection-img" src="./items/dustbinred.png"> 
+    <script>
+      // Mobile menu toggle
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+      if (btn && menu) {
+        btn.addEventListener("click", () => {
+          const open = menu.classList.toggle("hidden") === false;
+          btn.setAttribute("aria-expanded", String(open));
+        });
+      }
 
-          </li>
-        </ul>
-      </div>
-
-      <div class="col s12 m6">
-        <ul class="collection with-header">
-          <li class="collection-header"><h4>Bin liners</h4></li>
-          <li class="collection-item">
-            <div class="chip">
-              white
-            </div>
-            <div class="chip">
-              black
-            </div>
-            <div class="chip">
-              red
-            </div>
-            <div class="chip">
-              yellow
-            </div>
-          </li>
-          <li class="collection-item">
-            <img class="collection-img" src="./items/binlinerblack.png"> 
-          </li>
-          <li class="collection-item">
-            <img class="collection-img" src="./items/binlinerwhite.png"> 
-          </li>
-          <li class="collection-item">
-            <img class="collection-img" src="./items/binlineryellow.png"> 
-          </li>
-          <li class="collection-item">
-            <img class="collection-img" src="./items/binlinerred.png"> 
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col s12 m12">
-      <ul class="collection with-header">
-        <li class="collection-header"><h4>Khaki Bags</h4></li>
-        <li class="collection-item khaki right">
-          <!-- <img class="collection-khaki" src="./items/khakibags.png">  -->
-          <img class="materialboxed center" src="./items/khakibags.png">
-        </li>
-      </ul>
-    </div>
-  </section>
-  
-
-  <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red">
-      <i class="large material-icons">chat</i>
-    </a>
-    <ul>
-      <li><a class="btn-floating blue lighten-1"><i class="material-icons">facebook</i></a></li>
-      <li><a class="btn-floating blue darken-1"><i class="material-icons">phone</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">sms</i></a></li>
-      <li><a class="btn-floating blue"><i class="material-icons">email</i></a></li>
-    </ul>
-  </div>
-
-  <!--  Scripts-->
-  <script src="jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
